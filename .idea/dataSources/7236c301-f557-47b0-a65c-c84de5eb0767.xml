@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - db_homework@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="db_homework">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="mydb"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="performance_schema"/>
+    <schema id="6" name="sakila"/>
+    <schema id="7" name="sys"/>
+    <schema id="8" name="world"/>
+    <table id="9" parent="1" name="hata"/>
+    <table id="10" parent="1" name="rayon"/>
+    <column id="11" parent="9" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="12" parent="9" name="rooms">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="13" parent="9" name="area">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="14" parent="9" name="adress">
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="15" parent="9" name="price">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="16" parent="9" name="rayon_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="17" parent="9" name="hata_rayon_id_fk">
+      <columns>rayon_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="18" parent="9" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="19" parent="9" name="hata_rayon_id_fk">
+      <columns>rayon_id</columns>
+      <ref-key>~.rayon.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="20" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="21" parent="10" name="name">
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <key id="22" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

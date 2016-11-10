@@ -19,25 +19,46 @@
     <div class="my_body">
         <h2>Result</h2>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-hover table-condensed">
             <thead>
-            <th>#</th>
-            <th>Кол. комнат</th>
-            <th>Площадь</th>
-            <th>Адрес</th>
-            <th>Цена</th>
-            <th>Раен</th>
+            <th class="col-xs-1">#</th>
+            <th  class="col-xs-2">Район</th>
+            <th >Адрес</th>
+            <th class="col-xs-1">Комнат</th>
+            <th  class="col-xs-1">Площадь</th>
+            <th  class="col-xs-1">Цена</th>
+
+            <th class="col-xs-1"></th>
+            <th class="col-xs-1"></th>
             </thead>
             <c:forEach var="hata" items="${list}">
                 <tr>
                     <td>${hata.id}</td>
+                    <td>${hata.rayon}</td>
+                    <td>${hata.adress}</td>
                     <td>${hata.rooms}</td>
                     <td>${hata.area}</td>
-                    <td>${hata.adress}</td>
                     <td>${hata.price}</td>
-                    <td>${hata.rayon}</td>
+
+                    <td><a class="btn btn-default btn-md" href="">Изменить</a></td>
+                        <td><a class="btn btn-default btn-md" href="/del?id=${hata.id}">Удалить</a> </td>
+
                 </tr>
             </c:forEach>
+            <tr>
+                <td></td>
+                <form class="form" action="/add" method="post">
+                    <td><input class="form-control" type="text" name="rayon" value=""></td>
+                    <td><input class="form-control" type="text" name="adress" value=""></td>
+                    <td><input class="form-control" type="text" name="rooms" value=""></td>
+                    <td><input class="form-control" type="text" name="area" value=""></td>
+                    <td><input class="form-control" type="text" name="price" value=""></td>
+                    <td><input class="btn btn-primary btn-md" type="submit" value="Добавить"></td>
+                    <td></td>
+
+                </form>
+
+            </tr>
 
         </table>
         <a class="btn btn-primary" href="\">На главную</a>

@@ -15,7 +15,23 @@
     <servlet-name>All</servlet-name>
     <url-pattern>/all</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Add</servlet-name>
+    <servlet-class>servlets.AddHataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Add</servlet-name>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
 
+  <servlet>
+    <servlet-name>Del</servlet-name>
+    <servlet-class>servlets.DellHataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Del</servlet-name>
+    <url-pattern>/del</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>

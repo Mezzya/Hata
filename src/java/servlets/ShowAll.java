@@ -22,7 +22,13 @@ public class ShowAll extends HttpServlet {
             Connection con = DriverManager.getConnection(dbp.getUrl(),dbp.getUser(),dbp.getPwd());
 
             String param = req.getParameter("pr");
-            int par = Integer.parseInt(param);
+            int par;
+            try {
+                par = Integer.parseInt(param);
+            } catch (NumberFormatException e)
+            {
+                par=1;
+            }
 
             if (par==1)
             {

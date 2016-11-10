@@ -15,6 +15,7 @@ import java.sql.SQLException;
  */
 public class DellHataServlet extends HttpServlet {
     DbProperties db = new DbProperties();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -26,8 +27,10 @@ public class DellHataServlet extends HttpServlet {
 
             PreparedStatement ps = con.prepareStatement("DELETE FROM hata WHERE id="+id);
             ps.execute();
+            System.out.println("HEHE");
 
             req.getRequestDispatcher("/all").forward(req,resp);
+
             return;
 
         } catch (SQLException e) {

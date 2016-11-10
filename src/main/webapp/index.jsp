@@ -14,7 +14,7 @@
     <div class="my_body">
     <h2>Hello World!</h2>
 
-    <form class="" action="/all" method="post">
+    <form class="" action="/all" method="get">
         <input type="radio" name="pr" value="1">
         Cписок всех квартир
         <br>

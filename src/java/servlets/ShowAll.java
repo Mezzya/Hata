@@ -15,7 +15,9 @@ public class ShowAll extends HttpServlet {
     HataWrapper hataWrapper = new HataWrapper();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -43,12 +45,16 @@ public class ShowAll extends HttpServlet {
                     System.out.println(hata);
                 }
 
+                String strEdit = req.getParameter("edit");
+                if (strEdit!=null){
+                    Integer edit = Integer.parseInt(strEdit);
+                    req.setAttribute("edit",strEdit);
+                }
 
                 req.setAttribute("list",list);
 
                 req.setAttribute("hatas",hataWrapper);
-                req.setAttribute("ht",hataWrapper.getHatas().get(0));
-                req.setAttribute("adress",hataWrapper.getHatas().get(0).getAdress());
+
                 req.getRequestDispatcher("/all.jsp").forward(req,resp);
                 return;
 
@@ -70,4 +76,5 @@ public class ShowAll extends HttpServlet {
 
 
     }
+
 }

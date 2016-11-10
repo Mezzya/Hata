@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class AddHataServlet extends HttpServlet {
     DbProperties db = new DbProperties();
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 //        Выгребли параметры
         String rayon = req.getParameter("rayon");
@@ -38,8 +38,10 @@ public class AddHataServlet extends HttpServlet {
 
             pr.execute();
             System.out.println("Well done commander");
+
             req.setAttribute("pr","1");
-            req.getRequestDispatcher("/all").forward(req,resp);
+            resp.sendRedirect("/all");
+//            req.getRequestDispatcher("/all").forward(req,resp);
             return;
 
 

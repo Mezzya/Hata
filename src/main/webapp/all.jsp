@@ -19,7 +19,7 @@
     <div class="my_body">
         <h2>Result</h2>
 
-        <table class="table table-striped table-hover table-condensed">
+        <table class="table table-striped table-condensed">
             <thead>
             <th class="col-xs-1">#</th>
             <th  class="col-xs-2">Район</th>
@@ -32,22 +32,42 @@
             <th class="col-xs-1"></th>
             </thead>
             <c:forEach var="hata" items="${list}">
-                <tr>
-                    <td>${hata.id}</td>
-                    <td>${hata.rayon}</td>
-                    <td>${hata.adress}</td>
-                    <td>${hata.rooms}</td>
-                    <td>${hata.area}</td>
-                    <td>${hata.price}</td>
 
-                    <td><a class="btn btn-default btn-md" href="">Изменить</a></td>
-                        <td><a class="btn btn-default btn-md" href="/del?id=${hata.id}">Удалить</a> </td>
+                    <c:choose>
+                        <c:when test="${hata.id eq edit}">
+
+                            <tr class="danger">
+
+                                <td>${hata.id}</td>
+                                <td><input class="form-control" type="text" name="rayon" value="${hata.rayon}"></td>
+                                <td><input class="form-control" type="text" name="adress" value="${hata.adress}"></td>
+                                <td><input class="form-control" type="text" name="rooms" value="${hata.rooms}"></td>
+                                <td><input class="form-control" type="text" name="area" value="${hata.area}"></td>
+                                <td><input class="form-control" type="text" name="price" value="${hata.price}"></td>
+                                <td><input class="btn btn-primary btn-md" type="submit" value="Записать"></td>
+
+                            <td><a class="btn btn-default btn-md" href="/all">Отмена</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                            <td>${hata.id}</td>
+                            <td>${hata.rayon}</td>
+                            <td>${hata.adress}</td>
+                            <td>${hata.rooms}</td>
+                            <td>${hata.area}</td>
+                            <td>${hata.price}</td>
+                            <td><a class="btn btn-default btn-md" href="/all?edit=${hata.id}">Изменить</a></td>
+                            <td><a class="btn btn-default btn-md" href="/del?id=${hata.id}">Удалить</a> </td>
+
+                        </c:otherwise>
+                    </c:choose>
+
 
                 </tr>
             </c:forEach>
             <tr>
                 <td></td>
-                <form class="form" action="/add" method="post">
+                <form class="form" action="/add" method="get">
                     <td><input class="form-control" type="text" name="rayon" value=""></td>
                     <td><input class="form-control" type="text" name="adress" value=""></td>
                     <td><input class="form-control" type="text" name="rooms" value=""></td>

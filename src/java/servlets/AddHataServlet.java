@@ -21,9 +21,19 @@ public class AddHataServlet extends HttpServlet {
 //        Выгребли параметры
         String rayon = req.getParameter("rayon");
         String adress = req.getParameter("adress");
-        int rooms = Integer.parseInt(req.getParameter("rooms"));
-        int area = Integer.parseInt(req.getParameter("area"));
-        int price = Integer.parseInt(req.getParameter("price"));
+
+        int rooms=0, area=0, price=0;
+        try {
+          rooms = Integer.parseInt(req.getParameter("rooms"));
+          area = Integer.parseInt(req.getParameter("area"));
+          price = Integer.parseInt(req.getParameter("price"));
+      } catch (NumberFormatException e)
+      {
+          req.setAttribute("error","Неверно заполнены поля. Попробуйте еще раз");
+          req.getRequestDispatcher("/all").forward(req,resp);
+          return;
+      }
+
         System.out.println("TUTA edit_id="+req.getParameter("edit_id"));
         try {
             Connection con = DriverManager.getConnection(db.getUrl(),db.getUser(),db.getPwd());

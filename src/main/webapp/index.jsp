@@ -12,17 +12,12 @@
 
 <div class="container">
     <div class="my_body">
-    <h2>Hello World!</h2>
+    <h2>База квартир</h2>
 
-    <form class="" action="/all" method="get">
-        <input type="radio" name="pr" value="1">
-        Cписок всех квартир
-        <br>
-        <input type="radio" name="pr" value="2">
-        Список однокомнатных квартир
-        <br>
-        <input class="btn btn-primary" type="submit" value="Запрос">
-    </form>
+        <a class="btn btn-primary" href="\all">Весь список</a>
+
+        <a class="btn btn-primary" href="filter.jsp">Фильтр</a>
+
 
 
     </div>

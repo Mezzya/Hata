@@ -17,7 +17,8 @@
 
 <div class="container">
     <div class="my_body">
-        <h2>Result</h2>
+        <h2>Список квартир</h2>
+        <h6 style="color: red">${error}</h6>
 
         <table class="table table-striped table-condensed">
             <thead>
@@ -84,6 +85,7 @@
 
         </table>
         <a class="btn btn-primary" href="\">На главную</a>
+        <a class="btn btn-primary" href="\filter.jsp">Фильтр</a>
        
 
     </div>

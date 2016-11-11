@@ -37,16 +37,18 @@
                         <c:when test="${hata.id eq edit}">
 
                             <tr class="danger">
-
+                            <form class="form" action="/add" method="get">
                                 <td>${hata.id}</td>
                                 <td><input class="form-control" type="text" name="rayon" value="${hata.rayon}"></td>
                                 <td><input class="form-control" type="text" name="adress" value="${hata.adress}"></td>
                                 <td><input class="form-control" type="text" name="rooms" value="${hata.rooms}"></td>
                                 <td><input class="form-control" type="text" name="area" value="${hata.area}"></td>
                                 <td><input class="form-control" type="text" name="price" value="${hata.price}"></td>
-                                <td><input class="btn btn-primary btn-md" type="submit" value="Записать"></td>
-
-                            <td><a class="btn btn-default btn-md" href="/all">Отмена</a></td>
+                                <td>
+                                    <input type="hidden" name="edit_id" value="${hata.id}">
+                                    <input class="btn btn-primary btn-md" type="submit" value="Записать"></td>
+                                <td><a class="btn btn-default btn-md" href="/all">Отмена</a></td>
+                                </form>
                         </c:when>
                         <c:otherwise>
                             <tr>

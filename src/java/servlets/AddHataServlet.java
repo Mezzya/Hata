@@ -24,23 +24,50 @@ public class AddHataServlet extends HttpServlet {
         int rooms = Integer.parseInt(req.getParameter("rooms"));
         int area = Integer.parseInt(req.getParameter("area"));
         int price = Integer.parseInt(req.getParameter("price"));
-
+        System.out.println("TUTA edit_id="+req.getParameter("edit_id"));
         try {
             Connection con = DriverManager.getConnection(db.getUrl(),db.getUser(),db.getPwd());
 
-            PreparedStatement pr = con.prepareStatement("INSERT INTO hata (rooms, area,adress,price, rayon) VALUE (?,?,?,?,?)");
+            if (req.getParameter("edit_id")!=null)
+            {
+                int id = Integer.parseInt(req.getParameter("edit_id"));
+//                Редактируем запись
+                PreparedStatement pr = con.prepareStatement("UPDATE hata SET rooms=?, area=?,adress=?,price=?, rayon=? WHERE id=?");
+                pr.setInt(1, rooms);
+                pr.setInt(2, area);
+                pr.setString(3, adress);
+                pr.setInt(4,price);
+                pr.setString(5, rayon);
+                pr.setInt(6,id);
 
-            pr.setInt(1, rooms);
-            pr.setInt(2, area);
-            pr.setString(3, adress);
-            pr.setInt(4,price);
-            pr.setString(5, rayon);
+                pr.execute();
+                System.out.println("Well done UPDATE");
 
-            pr.execute();
-            System.out.println("Well done commander");
+                req.setAttribute("pr","1");
+                resp.sendRedirect("/all");
 
-            req.setAttribute("pr","1");
-            resp.sendRedirect("/all");
+
+            }
+            else
+            {
+//                Добавляем новую запись
+                PreparedStatement pr = con.prepareStatement("INSERT INTO hata (rooms, area,adress,price, rayon) VALUE (?,?,?,?,?)");
+
+                pr.setInt(1, rooms);
+                pr.setInt(2, area);
+                pr.setString(3, adress);
+                pr.setInt(4,price);
+                pr.setString(5, rayon);
+
+                pr.execute();
+                System.out.println("Well done NEW");
+
+                req.setAttribute("pr","1");
+                resp.sendRedirect("/all");
+
+            }
+
+
 //            req.getRequestDispatcher("/all").forward(req,resp);
             return;
 
